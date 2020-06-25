@@ -1,0 +1,27 @@
+E:\java\jdk-13.0.1\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.3\lib\idea_rt.jar=50746:C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.3\bin" -Dfile.encoding=UTF-8 -classpath C:\idea\Algorithm\out\production\Homework homework2.Poker
+
+Black: 2H 3D 5S 9C KD White: 2C 3H 4S 8C AH
+White wins
+
+Process finished with exit code 0
+
+E:\java\jdk-13.0.1\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.3\lib\idea_rt.jar=50773:C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.3\bin" -Dfile.encoding=UTF-8 -classpath C:\idea\Algorithm\out\production\Homework homework2.Poker
+
+Black: 2H 4S 4C 2D 4H White: 2S 8S AS QS 3S
+Black wins
+
+Process finished with exit code 0
+
+E:\java\jdk-13.0.1\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.3\lib\idea_rt.jar=50780:C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.3\bin" -Dfile.encoding=UTF-8 -classpath C:\idea\Algorithm\out\production\Homework homework2.Poker
+
+Black: 2H 3H 5H 9H KH White: 2C 3H 4S 5C 6H
+Black wins
+
+Process finished with exit code 0
+
+E:\java\jdk-13.0.1\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.3\lib\idea_rt.jar=50788:C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.3\bin" -Dfile.encoding=UTF-8 -classpath C:\idea\Algorithm\out\production\Homework homework2.Poker
+
+Black: 2H 3D 5S 9C KD White: 2D 3H 5C 9S KH
+Tie
+
+Process finished with exit code 0
