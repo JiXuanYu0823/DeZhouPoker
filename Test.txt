@@ -1,0 +1,44 @@
+package homework2;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class PokerTest {
+	
+	@Test
+	void firJudTest() {
+		//2H 4S 4C 2D 4H
+		int[] arr_num = {4,4,4,2,2};
+		char[] arr_col = {'H','S','C','D','H'};
+		int res = Poker.firJud(arr_num,arr_col);
+		Assertions.assertEquals(7,res);
+	}
+	
+	@Test
+	void secJudTest() {
+		// Black: 2H 3D 5S 9C KD White: 2D 3H 5C 9S KH
+		int[] blackArrNum = {12,8,4,2,1};
+		int[] whiteArrNum = {12,8,4,2,1};
+		int res = Poker.secJud(blackArrNum,whiteArrNum);
+		Assertions.assertEquals(3,res);
+	}
+	
+	@Test
+	void sortTest() {
+		int[] arr = {4,56,89,3,27};
+		Poker.sort(arr);
+		Assertions.assertEquals(Arrays.toString(new int[]{89,56,27,4,3}), Arrays.toString(arr));
+	}
+	
+	@Test
+	void changeTest() {
+		char[] arr ={'A','K','T','4'};
+		int[] arr_num = new int[4];
+		Poker.change(arr,arr_num);
+		Assertions.assertEquals(Arrays.toString(new int[]{13,12,9,3}),Arrays.toString(arr_num));
+	}
+}
