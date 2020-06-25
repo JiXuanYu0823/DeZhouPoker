@@ -1,0 +1,168 @@
+package homework2;
+
+import java.util.Arrays;
+import java.util.Scanner;
+/*按实际的德州扑克规则进行：
+*   同花顺9>四条8>葫芦7>同花6>顺子5>三条4>两对3>一对2>散排1*/
+public class Poker {
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		String str = in.nextLine();
+		String[] strs = str.split(" ");
+		char[] blackNum = new char[5];
+		int[] blackNumInt = new int[5];
+		char[] whiteNum = new char[5];
+		int[] whiteNumInt = new int[5];
+		char[] blackCol = new char[5];
+		char[] whiteCol = new char[5];
+		for(int i = 0;i < 5;i++){
+			blackNum[i] = strs[i + 1].charAt(0);
+			blackCol[i] = strs[i + 1].charAt(1);
+		}
+		for(int i = 0;i < 5;i++){
+			whiteNum[i] = strs[i + 7].charAt(0);
+			whiteCol[i] = strs[i + 7].charAt(1);
+		}
+		change(blackNum,blackNumInt);
+		change(whiteNum,whiteNumInt);
+		sort(blackNumInt);
+		sort(whiteNumInt);
+		int br = firJud(blackNumInt,blackCol);
+		int wr = firJud(whiteNumInt,whiteCol);
+		if(br > wr)
+			System.out.println("Black wins");
+		else if(br < wr)
+			System.out.println("White wins");
+		else if(br == wr){
+			secJud(blackNumInt,whiteNumInt);
+		}
+	}
+	
+	public static int firJud(int[] numInt,char[] blackCol){
+		boolean flag = true;
+		int x = 1;
+		for (int i = 1; i < blackCol.length; i++) {
+			if(blackCol[i] != blackCol[i - 1])
+				flag = false;
+		}
+		if(flag){
+			x = 6;
+			flag = true;
+		}
+		for (int i = 1; i < blackCol.length; i++) {
+			if(numInt[i] - numInt[i - 1] != 1)
+				flag = false;
+		}
+		if(flag){
+			if(x == 6)
+				return 9;
+			else
+				return 5;
+		}
+		else if(x == 6)
+			return 6;
+		
+		int[] temp = {1,0,0,0,0};
+		int k = 0;
+		for (int i = 1; i < 5; i++) {
+			if(numInt[i] == numInt[i - 1]){
+				temp[k]++;
+			}
+			else {
+				k++;
+				temp[k]++;
+			}
+		}
+		sort(temp);
+		if(temp[0] == 4)
+			return 8;
+		else if(temp[0] == 3){
+			if(temp[1] == 2)
+				return 7;
+			else
+				return 4;
+		}
+		else if(temp[0] == 2){
+			if(temp[1] == 2)
+				return 3;
+			else
+				return 2;
+		}
+		else
+			return 1;
+	}
+	
+	public static int secJud(int[] blackNumInt, int[] whiteNumInt) {
+		int i = Arrays.toString(blackNumInt).compareTo(Arrays.toString(whiteNumInt));
+		if(i > 0) {
+			System.out.println("Black wins");
+			return 1;
+		}
+		else if(i < 0) {
+			System.out.println("White wins");
+			return 2;
+		}
+		else {
+			System.out.println("Tie");
+			return 3;
+		}
+	}
+	
+	public static void sort(int[] blackNumInt) {
+		for (int i = 0; i < 4; i++) {
+			for (int j = i + 1; j < 5; j++) {
+				if(blackNumInt[i] < blackNumInt[j]){
+					int tem = blackNumInt[i];
+					blackNumInt[i] = blackNumInt[j];
+					blackNumInt[j] = tem;
+				}
+			}
+		}
+	}
+	
+	public static void change(char[] blackNum,int[] blackNumInt){
+		for (int i = 0; i < blackNum.length; i++) {
+			switch (blackNum[i]) {
+				case '2':
+					blackNumInt[i] = 1;
+					break;
+				case '3':
+					blackNumInt[i] = 2;
+					break;
+				case '4':
+					blackNumInt[i] = 3;
+					break;
+				case '5':
+					blackNumInt[i] = 4;
+					break;
+				case '6':
+					blackNumInt[i] = 5;
+					break;
+				case '7':
+					blackNumInt[i] = 6;
+					break;
+				case '8':
+					blackNumInt[i] = 7;
+					break;
+				case '9':
+					blackNumInt[i] = 8;
+					break;
+				case 'T':
+					blackNumInt[i] = 9;
+					break;
+				case 'J':
+					blackNumInt[i] = 10;
+					break;
+				case 'Q':
+					blackNumInt[i] = 11;
+					break;
+				case 'K':
+					blackNumInt[i] = 12;
+					break;
+				case 'A':
+					blackNumInt[i] = 13;
+					break;
+			}
+		}
+	}
+}
